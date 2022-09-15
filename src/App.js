@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Box } from "@mui/material";
+import { Navbar, Feed, VideoDetails, ChannelDetails, SearchFeed } from "./components";
+import Footer from "./components/Footer";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Box sx={{ backgroundColor: '#000' }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Feed />}  > </Route>
+          <Route path="/video/:id" element={<VideoDetails />} />
+          <Route path="/channel/:id" element={<ChannelDetails />} />
+          <Route path="/search/:serchTerm" element={<SearchFeed />} />
+        </Routes>
+        <Footer />
+      </Box>
+    </Router>
   );
 }
 
